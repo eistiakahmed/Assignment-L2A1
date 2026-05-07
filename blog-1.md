@@ -23,18 +23,13 @@ The problem with `any` is that it creates a false sense of security. Your code c
 The `unknown` type represents values that we don't know the type of at compile time. Unlike `any`, `unknown` forces you to perform type checking before using the value.
 
 ```typescript
-let data: unknown = 42;
+let data: unknown = 42;           
 
-// These all cause compile-time errors:
-// data.toUppercase(); // Error: Object is of type 'unknown'
-// data.foo.bar.baz;   // Error: Object is of type 'unknown'
-// data();              // Error: Object is of type 'unknown'
 
-// You MUST narrow the type first:
 if (typeof data === 'string') {
-  console.log(data.toUpperCase()); // Now TypeScript knows it's a string
+  console.log(data.toUpperCase()); 
 } else if (typeof data === 'number') {
-  console.log(data.toFixed(2));    // Now TypeScript knows it's a number
+  console.log(data.toFixed(2));    
 }
 ```
 
@@ -46,17 +41,17 @@ Type narrowing is the process of refining a variable's type within a conditional
 
 ```typescript
 function processValue(value: unknown): void {
-  // typeof guard
+  
   if (typeof value === 'string') {
     console.log(value.toUpperCase());
   }
 
-  // instanceof guard
+  
   if (value instanceof Date) {
     console.log(value.getFullYear());
   }
 
-  // Custom type guard
+  
   function isUser(obj: unknown): obj is { name: string } {
     return typeof obj === 'object' && obj !== null && 'name' in obj;
   }

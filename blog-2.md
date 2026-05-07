@@ -9,7 +9,7 @@ One of TypeScript's most powerful features is generics. Generics allow you to wr
 Without generics, you'd either need to duplicate code or use `any`:
 
 ```typescript
-// Without generics - code duplication
+
 function getFirstNumber(arr: number[]): number {
   return arr[0];
 }
@@ -18,13 +18,13 @@ function getFirstString(arr: string[]): string {
   return arr[0];
 }
 
-// Without generics - using any (loses type safety)
+ 
 function getFirstAny(arr: any[]): any {
   return arr[0];
 }
 
 const result = getFirstAny([1, 2, 3]);
-// result is 'any' - no autocomplete, no type checking
+
 ```
 
 ## Basic Generic Functions
@@ -32,19 +32,19 @@ const result = getFirstAny([1, 2, 3]);
 With generics, you write once and reuse with type safety:
 
 ```typescript
-// With generics - reusable and type-safe
+
 function getFirst<T>(arr: T[]): T {
   return arr[0];
 }
 
-const num = getFirst([1, 2, 3]);        // num is number
-const str = getFirst(['a', 'b', 'c']);  // str is string
-const bool = getFirst([true, false]);    // bool is boolean
+const num = getFirst([1, 2, 3]);        
+const str = getFirst(['a', 'b', 'c']);  
+const bool = getFirst([true, false]);    
 
-// TypeScript knows the exact type!
-num.toFixed(2);      // Valid
-str.toUpperCase();   // Valid
-bool.toString();     // Valid
+
+num.toFixed(2);      
+str.toUpperCase();   
+bool.toString();     
 ```
 
 ## Generic Constraints
@@ -52,21 +52,21 @@ bool.toString();     // Valid
 Sometimes you want to ensure the generic type meets certain requirements. You can use constraints with the `extends` keyword:
 
 ```typescript
-// Without constraint - could error at runtime
+
 function getProperty<T>(obj: T, key: string): any {
-  return obj[key]; // Error: implicit any
+  return obj[key]; 
 }
 
-// With constraint - compile-time safety
+
 function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];
 }
 
 const user = { id: 1, name: 'Eistiak', age: 30 };
 
-const name = getProperty(user, 'name');  //  string
-const age = getProperty(user, 'age');    //  number
-// const invalid = getProperty(user, 'invalid'); // Compile error!
+const name = getProperty(user, 'name');  
+const age = getProperty(user, 'age');    
+
 ```
 
 ## Generic Classes
@@ -90,15 +90,15 @@ class DataStore<T> {
   }
 }
 
-// Type-safe stores for different data types
+
 const userStore = new DataStore<{ id: number; name: string }>();
 userStore.add({ id: 1, name: 'Eistiak' });
-// userStore.add({ id: 'wrong' }); //  Error!
+
 
 const numberStore = new DataStore<number>();
 numberStore.add(42);
 numberStore.add(3.14);
-// numberStore.add('not a number'); //  Error!
+
 ```
 
 ## Multiple Generic Type Parameters
@@ -126,7 +126,7 @@ const userMap = createMap<number, { name: string; email: string }>();
 userMap.set(1, { name: 'Eistiak', email: 'eistiakahmed@gmail.com' });
 const user = userMap.get(1); 
 
-// Type is { name: string; email: string } | undefined
+
 ```
 
 ## Generic Default Types
@@ -140,10 +140,10 @@ interface ApiResponse<Data = unknown, Error = string> {
   error?: Error;
 }
 
-// Usage with explicit types
+
 type UserResponse = ApiResponse<{ id: number; name: string }>;
 
-// Usage with defaults
+
 type GenericResponse = ApiResponse;
 ```
 
