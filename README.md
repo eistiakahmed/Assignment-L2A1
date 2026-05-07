@@ -39,10 +39,6 @@ This blog explains the critical difference between `any` and `unknown` types in 
 
 This blog covers TypeScript generics, showing how to build reusable functions and classes that maintain full type safety across different data structures.
 
-## Author
-
-**Eistiak Ahmed**
-
 ---
 
 **Submission Repository**: [https://github.com/eistiakahmed/Assignment-L2A1.git](https://github.com/eistiakahmed/Assignment-L2A1.git)
