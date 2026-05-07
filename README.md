@@ -45,4 +45,4 @@ This blog covers TypeScript generics, showing how to build reusable functions an
 
 ---
 
-**Submission Repository**: [GitHub URL to be added]
+**Submission Repository**: [https://github.com/eistiakahmed/Assignment-L2A1.git](https://github.com/eistiakahmed/Assignment-L2A1.git)
